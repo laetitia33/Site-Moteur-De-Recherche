@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bienvenue</title>
+		<meta name="description" content="Page d'accueil" />
+		<meta name="keywords" content="Accueil" />
+		<meta name="author" content="Laetitia Bernardi" />
+		<link rel="shortcut icon" href="assets/favicon.ico">
+		
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<!--background et box meteo-->
+		<!--<link rel="stylesheet" type="text/css" href="css/demo.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<!--modale recherche-->
+		<link rel="stylesheet" type="text/css" href="css/dialog.css" />
+		<!-- individual effect -->
+		<link rel="stylesheet" type="text/css" href="css/dialog-henry.css" />
+		<SCRIPT>
+		<!--
+		function silentErrorHandler() {return true;}
+		window.onerror=silentErrorHandler;
+		//-->
+		</SCRIPT>
+		<script src="js/snap.svg-min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Lora%7CLobster%7CEngagement%7CSlabo+27px%7CMerriweather%7CIndie+Flower%7CBlack+Ops+One%7CRoboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+		<script src="js/fontawesome.js"></script>
+		<!--jquery https://kit.fontawesome.com/285cdc047c.js-->
+		<script  src="js/jquery-2.2.4.min.js"></script>
+		<script  src="js/jquery-ui.min.js"></script>
+		<!--ecriture date-->
+		<script src='js/jquery.textillate.min.js'></script>
+		<script src ='js/jquery.lettering.min.js'></script>
+
+		 <link href="https://unpkg.com/video.js@6/dist/video-js.css" rel="stylesheet">
+  		<script src="https://unpkg.com/video.js@6/dist/video.js"></script>
+	</head>
+	<body>				 
+		<!--menu-->
+		<nav class="menu">
+			<input type="checkbox"  class="menu-open" name="menu-open" id="menu-open"/>
+			<label class="menu-open-button" for="menu-open">
+				<span class="hamburger hamburger-1"></span>
+				<span class="hamburger hamburger-2"></span>
+				<span class="hamburger hamburger-3"></span>
+			</label>
+			
+
+			<a id='btnActu' class="menu-item"  title="Informations"> <i class="fas fa-info"></i> </a>
+			<a id="btnMeteo" class="menu-item"  title="Météo"> <i class="fas fa-cloud-sun-rain"></i> </a>
+			<a id='btnClock'  class="menu-item"  title="Heure"> <i class="fas fa-clock"></i> </a>
+			<a href="mailto:33260laetitiabernardi@gmail.com" class="menu-item"  title="Contactez-moi"> <i class="fa fa-envelope"></i> </a>
+			<a id="btnGoogle" class="menu-item " data-dialog="somedialog"  title="Recherche Google"> <i class="fas fa-search"></i> </a>
+			<a id='mutePlay' class="menu-item" title='Un peu de détente..'> <span id='pause'> <i class="fas fa-volume-mute"></i></span> 
+				<span id='play'><i class="fas fa-volume-up"></i></span></a>
+
+			<audio id="foret" src="assets/musique/foret.mp3" >
+   Your browser does not support the audio element.
+</audio>
+
+		</nav>
+		<!-- filters -->
+		<svg>
+			<defs>
+			<filter id="shadowed-goo">
+			
+			<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+			<feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+			<feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+			<feColorMatrix in="shadow"  values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+			<feOffset in="shadow" dx="1" dy="1" result="shadow" />
+			<feComposite in2="shadow" in="goo" result="goo" />
+			<feComposite in2="goo" in="SourceGraphic" result="mix" />
+			</filter>
+			<filter id="goo">
+			<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+			<feColorMatrix in="blur"  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+			<feComposite in2="goo" in="SourceGraphic" result="mix" />
+			</filter>
+			</defs>
+		</svg>
+		<!--audio invisible-->
+	<audio></audio>
+	<h1>laetitia bernardi</h1>
+	<div class="container">
+		
+		<div class="bird-container bird-container--one">
+			<div class="bird bird--one"></div>
+		</div>
+		
+		<div class="bird-container bird-container--two">
+			<div class="bird bird--two"></div>
+		</div>
+		
+		<div class="bird-container bird-container--three">
+			<div class="bird bird--three"></div>
+		</div>
+		
+		<div class="bird-container bird-container--four">
+			<div class="bird bird--four"></div>
+		</div>
+		
+	</div>
+	<!--//////////////////recherche google responsive ///////////////////////////-->
+
+		<div id='googleResp'><script async src="https://cse.google.com/cse.js?cx=016212011546870682134:spkcv4oepxk"></script>
+<div class="gcse-search"></div></div>
+
+
+	<!--//////////////////heure responsive ///////////////////////////-->
+	<div id="dateResp"><script>
+	var aujourdhui = new Date(); 
+	var annee = aujourdhui.getFullYear(); // retourne le millésime
+	var mois =aujourdhui.getMonth()+1; // date.getMonth retourne un entier entre 0 et 11 donc il faut ajouter 1
+	var jour = aujourdhui.getDate(); // retourne le jour (1à 31)
+	var joursemaine = aujourdhui.getDay() ; // retourne un entier compris entre 0 et 6 (0 pour dimanche)
+	var tab_jour=new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+	document.write('Nous sommes le : ' +  tab_jour[joursemaine] + ' ' + jour + '/' + mois + '/' + annee) ;</script></div>
+		<!--////////////////////// API METEO ///////////////////////////-->
+		<div class='containerMeteoHeure'>
+		<div id="meteo" class="box1 blurred-bg tinted">
+			<div id='stopMeteo'>X</div>
+			<div class="content">
+				<!-- pluie-->
+				<div><canvas id="canvas">Canvas is not supported in your browser</canvas></div>
+				
+				<div id='heure'><script> d = new Date(); document.write('Météo à '+d.toLocaleTimeString()); </script></div>
+				<!--//////////////////ICONES METEO///////////////////////////-->
+				<!--nuage + soleil-->
+				<div id="soleilNuageBlanc"><img src="assets/images/soleilNuageBlanc.png" alt='nuage blanc et soleil'></div>
+				<!-- soleil-->
+				<div id="soleil"><img src="assets/images/soleil.png" alt ='soleil'></div>
+				<!--nuage blanc-->
+				<div id="nuageBlanc"><img src="assets/images/nuage.png" alt='nuage blanc'></div>
+				<!--soleil+neige-->
+				<div id="soleilNeige"><img src="assets/images/soleil_Neige.png" alt='soleil et neige'></div>
+				<!--orage+pluie-->
+				<div id="oragePluie"><img src="assets/images/oragePluie.png" alt='orage et pluie'></div>
+				<!--orage+soleil+pluie-->
+				<div id="orageSoleilPluie"><img src="assets/images/orageSoleilPluie.png" alt='orage,soleil et pluie'></div>
+				<!--pluie-->
+				<div id="pluie"><img src="assets/images/pluie.png" alt='nuage et pluie'></div>
+				<!--pluie + soleil-->
+				<div id="pluieSoleil"><img src="assets/images/pluieSoleil.png" alt='pluie et soleil'></div>
+				<!--pluie + neige-->
+				<div id="neigePluie"><img src="assets/images/neigePluie.png" alt='neige et pluie'></div>
+				<!--pluie + neige + soleil-->
+				<div id="neigePluieSoleil"><img src="assets/images/soleil_Neige.png" alt='soleil et neige'></div>
+				<!--neige -->
+				<div id="neige"><img src="assets/images/neige.png" alt='neige'></div>
+				<!--brouillard -->
+				<div id="brouillard"><img src="assets/images/brouillard.png" alt ='brouillard'></div>
+				<!--brouillard -->
+				<div id="nuages"><img src="assets/images/nuage.png" alt='nuage'></div>
+				
+				<!--messages météo-->
+				<div id='descr'></div>
+				<!--encard météo-->
+				<div id ='titre'></div>
+				<!--vent -->
+				<div id="vitesseVent"><img src="assets/images/vent.png" alt='image de vent'></div>
+				<div id="messageMeteo"></div>
+				<div id ='temp'></div><br><br></div>
+				<div id ='prec'></div>
+				<div id ='vent'></div>
+				<div id ='hum'></div>
+				<div id ='uv'></div>
+				<div id ='dernier'></div>
+				<div id='btnArrow'><i class="fas fa-angle-double-down fa-4x"></i></div>
+				<div id='btnArrowUp'><i class="fas fa-angle-double-up fa-4x"></i></div>
+				<div id='iframe1'><div id="cont_4d7aacd246ec6f4084a97c74781cf1ba" ><h2>A venir </h2><script async src="https://www.tameteo.com/wid_loader/4d7aacd246ec6f4084a97c74781cf1ba"></script></div></div>
+				<div id='iframe2'><div id="cont_f04a346db49ab8cbfb757e2324db1641"><h2>A venir </h2><script  async src="https://www.tameteo.com/wid_loader/f04a346db49ab8cbfb757e2324db1641"></script></div></div>
+				<!--////////////////////// clock ////////////////-->
+			</div>
+			<div class="containerClock">
+				<!-- néon-->
+				<div class='container1'></div>
+				<div class='container2'></div>
+				<div class='container3'></div>
+				<div class="time"></div>
+				
+				<div id='stopClock'>X</div>
+				
+				
+			</div>
+			<!--date-->
+			<div class="tlt">Nous sommes le 
+				<div class="date">
+					<div id="day"></div>
+					<div id="daymonth"></div>
+					<div id="year"></div>
+				</div></div>
+				<!--actualités-->
+				<div class="wrapper">
+					<ul class="stage clearfix">
+						<li class="scene">
+							<div class="movie" onclick="return true">
+								<div class="poster">
+									<h3>Actualités</h3><hr />
+									<div id="actualite">
+										<p>Suivez toutes les infos en direct grâce à Euronews - Retrouvez l'actualité en France et les informations à l'international.</p>
+									</div>
+								</div>
+								<div class="info">
+									<div id='stopActu'>X</div>
+									<iframe id='news' src="https://fr.euronews.com/embed/timeline"></iframe>
+									
+									
+									
+									
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- recherche google-->
+			<div class="container">
+				<div class="content">
+					<header class="codrops-header">
+						<div class="codrops-links">
+							
+							
+						</div>
+						
+					</header>
+					<nav id="menu" class="menu">
+						
+						
+					</nav>
+					<div id="somedialog" class="dialog">
+						<div class="dialog__overlay"></div>
+						<div class="dialog__content">
+							<div class="morph-shape" data-morph-open="M0,0h80c0,0,0,9.977,0,29.834c0,19.945,0,30.249,0,30.249H0c0,0,0-10.055,0-30.332C0,8.219,0,0,0,0z" data-morph-close="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
+								C3.084,29.762,0,29.75,0,29.75z">
+								<div class="gcse-search"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
+									<path d="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
+									C3.084,29.762,0,29.75,0,29.75z"></path>
+								</svg>
+							</div>
+							<div class="dialog-inner">
+								<div id='recherche'><script async src="https://cse.google.com/cse.js?cx=016212011546870682134:spkcv4oepxk"></script>
+							</div>
+							</div><div><button class="action" data-dialog-close>Fermer</button></div>
+						</div>
+					</div>
+				</div>
+				
+				</div><!-- /content -->
+				</div><!-- /container -->
+			<footer>
+				<p style='text-align:center;'>&copy; 2019 Laetita Bernardi - Tous droits réservés<br></p>
+			</footer>
+				<script src="js/classie.js"></script>
+				<script src="js/dialogFx.js"></script>
+				<script>
+					(function() {
+						var dlgtrigger = document.querySelector( '[data-dialog]' ),
+							somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+							// svg..
+							morphEl = somedialog.querySelector( '.morph-shape' ),
+							s = Snap( morphEl.querySelector( 'svg' ) ),
+							path = s.select( 'path' ),
+							steps = {
+								open : morphEl.getAttribute( 'data-morph-open' ),
+								close : morphEl.getAttribute( 'data-morph-close' )
+							},
+							dlg = new DialogFx( somedialog, {
+								onOpenDialog : function( instance ) {
+									// animate path
+									path.stop().animate( { 'path' : steps.open }, 400, mina.easeinout );
+								},
+								onCloseDialog : function( instance ) {
+									// animate path
+									path.stop().animate( { 'path' : steps.close }, 400, mina.easeinout );
+								}
+							} );
+						dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+					})();
+				</script>
+				<script src="js/meteo.js"></script>
+				<script src="js/rain.js"></script>
+				<script src="js/clock.js"></script>
+				<script src="js/script.js"></script>
+			</body>
+		</html>
